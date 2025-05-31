@@ -1,4 +1,3 @@
-# Run and deploy your AI Studio app
 # Applicacion para gestionar los ingresos y gastos de un Inventario de productos.
 This contains everything you need to run your app locally.
 
