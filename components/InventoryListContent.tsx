@@ -112,12 +112,12 @@ const InventoryListContent: React.FC = () => {
           <span className="xs:hidden">PDF</span>
         </button>
       </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-4 sm:mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+   
         <StatCard title="Productos Distintos" value={inventoryStats.totalProducts} icon={<span>📦</span>} />
         <StatCard title="Total Unidades en Stock" value={`${inventoryStats.totalStockUnits} uds.`} icon={<span>🗃️</span>} />
-        <StatCard title="Valor Inventario (Compra)" value={inventoryStats.totalInventoryValuePurchase} color="text-accent-warning" icon={<span>📉</span>} />
-        <StatCard title="Valor Inventario (Venta)" value={inventoryStats.totalInventoryValueSale} color="text-accent-positive" icon={<span>📈</span>}/>
+        <StatCard title="Valor Inventario (Compra)" value={inventoryStats.totalInventoryValuePurchase} color="text-accent-warning" icon={<span>📊</span>} />
+        <StatCard title="Valor Inventario (Venta)" value={inventoryStats.totalInventoryValueSale} color="text-accent-positive" icon={<span>📊</span>}/>
       </div>
       
       <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg overflow-x-auto">

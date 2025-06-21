@@ -47,7 +47,9 @@ const DashboardContent: React.FC = () => {
   const totalIncome = transactions.filter(t => t.type === 'income').reduce((sum, t) => sum + t.amount, 0);
   const totalExpenses = transactions.filter(t => t.type === 'expense').reduce((sum, t) => sum + t.amount, 0);
   const netProfit = totalIncome - totalExpenses;
-
+  console.log(totalIncome)
+   console.log(totalExpenses)
+    console.log(netProfit)
   const productSales: { [key: string]: { quantity: number; revenue: number } } = {};
   transactions.filter(t => t.type === 'income' && t.productId && t.quantity).forEach(t => {
     if (!productSales[t.productId!]) productSales[t.productId!] = { quantity: 0, revenue: 0 };

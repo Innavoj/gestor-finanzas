@@ -1,5 +1,5 @@
-# Run and deploy your AI Studio app
-# Applicacion para gestionar los ingresos y gastos de un Inventario de productos.
+# App para gestionar el inventario de productos, Las entradas y salidas de productos, cuentas por cobrar. # facilitando un mayor control de los productos en almacen y el control del flujo financiero.
+
 This contains everything you need to run your app locally.
 
 ## Run Locally
