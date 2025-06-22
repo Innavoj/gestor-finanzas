@@ -1,4 +1,4 @@
-# App para gestionar el inventario de productos, Las entradas y salidas de productos, cuentas por cobrar. # facilitando un mayor control de los productos en almacen y el control del flujo financiero.
+# App para controlar inventario, ingresos, gastos y cuentas, facilitando la administración financiera de un negocio.
 
 This contains everything you need to run your app locally.
 

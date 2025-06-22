@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { AppProvider, useAppContext } from './store';
 import DashboardContent from './components/DashboardContent';
 import DataEntryContent from './components/DataEntryContent';
@@ -17,6 +16,7 @@ interface NavLinkProps {
 
 const AppCore: React.FC = () => {
   const { state, dispatch } = useAppContext();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const NavLink: React.FC<NavLinkProps> = ({ to, label, icon }) => {
     const isActive = state.activeView === to;
@@ -49,9 +49,35 @@ const AppCore: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-lightgray font-sans antialiased">
+    <div className="flex flex-col md:flex-row md:h-screen bg-lightgray font-sans antialiased">
+      {/* Botón menú hamburguesa para móviles */}
+      <button
+        className="md:hidden fixed top-3 left-3 z-40 bg-primary-dark text-white p-2 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+        onClick={() => setSidebarOpen(true)}
+        aria-label="Abrir menú de navegación"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5m-16.5 5.25h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
       {/* Sidebar */}
-      <nav className="w-full md:w-72 bg-primary-dark text-white p-3 sm:p-5 space-y-3 sm:space-y-6 shadow-2xl flex flex-col flex-shrink-0 md:h-full md:overflow-y-auto custom-scrollbar">
+      <nav
+        className={`fixed md:static top-0 left-0 h-full w-4/5 max-w-xs md:w-72 bg-primary-dark text-white p-3 sm:p-5 space-y-3 sm:space-y-6 shadow-2xl flex flex-col flex-shrink-0 md:h-full custom-scrollbar z-50 transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:block'} overflow-y-auto max-h-screen`}
+        style={{ minHeight: '100vh' }}
+        aria-label="Menú principal"
+      >
+        {/* Botón cerrar menú en móviles */}
+        <div className="flex md:hidden justify-end mb-2">
+          <button
+            onClick={() => setSidebarOpen(false)}
+            className="text-white bg-secondary rounded-full p-1.5 focus:outline-none focus:ring-2 focus:ring-secondary"
+            aria-label="Cerrar menú"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
         <div className="text-center mb-4 sm:mb-8 pt-2">
           <div className="inline-flex items-center justify-center p-2 sm:p-3 bg-secondary rounded-full mb-2 sm:mb-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-6 h-6 sm:w-8 sm:h-8">
@@ -75,8 +101,17 @@ const AppCore: React.FC = () => {
             © {new Date().getFullYear()} Gestor Financiero
         </div>
       </nav>
-
-      <main className="flex-1 overflow-y-auto custom-scrollbar w-full">
+      {/* Overlay para cerrar menú en móviles */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-40 z-40 md:hidden touch-none"
+          onClick={() => setSidebarOpen(false)}
+          aria-label="Cerrar menú lateral"
+        />
+      )}
+      <main className="flex-1 overflow-y-auto custom-scrollbar w-full min-h-screen md:ml-0 pt-14 md:pt-0">
+        {/* Espacio superior para el botón menú en móviles */}
+        <div className="block md:hidden h-12" />
         {renderView()}
       </main>
     </div>

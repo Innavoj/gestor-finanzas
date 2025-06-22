@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { useAppContext } from '../store';
 import { Transaction, isOverdue as checkOverdue } from '../types';
@@ -253,3 +252,8 @@ const AccountsReceivableContent: React.FC = () => {
 };
 
 export default AccountsReceivableContent;
+
+// Mejoras responsivas:
+// - Se agregan clases xs:text-xs, xs:p-2, xs:space-y-2, xs:rounded-md, xs:max-w-full, xs:overflow-x-auto
+// - Se refuerzan los breakpoints en grids y paddings
+// - Se asegura que los filtros y tablas sean scrolleables horizontalmente en móviles

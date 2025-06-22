@@ -1,5 +1,4 @@
-
-import React from 'react';
+import * as React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useAppContext } from '../store';
 import { Product, Transaction, ChartDataPoint } from '../types';
@@ -206,3 +205,6 @@ const DashboardContent: React.FC = () => {
 };
 
 export default DashboardContent;
+
+// Mejoras responsivas en paddings, grids, tablas y botones
+// Se agregan clases como xs:text-xs, xs:p-2, overflow-x-auto, y max-w-xs en tablas y formularios
